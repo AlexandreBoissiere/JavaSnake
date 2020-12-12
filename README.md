@@ -5,7 +5,7 @@
 - execute
 
 ### Commands options
-#### execute
+- #### execute
 ##### Required
 
 |short argument |long argument|Description                    |
