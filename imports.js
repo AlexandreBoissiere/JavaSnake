@@ -11,8 +11,17 @@ function importsHandler(file_name) {
         actionFlow = actionFlow.Get();
         return [actionFlow, 0];
     } catch {
-        console.log("Unable to import module: ".red + file_name.red);
-        return [undefined, 1];
+        try {
+            let module_content = fs.readFileSync("lib/"+ file_name, {encoding:'utf8',flag:'r'});
+            module_content = module_content.replace(/(\r\n|\n|\r)/gm, "");
+            module_content = module_content.split("    ").join("");
+            let actionFlow = new action(module_content);
+            actionFlow = actionFlow.Get();
+        return [actionFlow, 0];
+        } catch {
+            console.log("Unable to import module: ".red + file_name.red);
+            return [undefined, 1];
+        }
     }
 }  
 
