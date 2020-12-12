@@ -7,7 +7,7 @@
 ### Commands options
 #### execute
 ##### Required
-- -f <filename>: File to execute
+- -f `<filename>`: File to execute
 ##### Optionals
 - --version:            Show the version number
 - -r, --exitcode:       Show the program exit code after its execution
