@@ -14,3 +14,7 @@
 - -m, --memorylog:      Show the program memory after its execution
 - --functionslog, --fm: Show the program functions memory after its execution
 - -h, --help:           Show this message
+
+|short argument|long argument|Description                   |
+|--------------|-------------|------------------------------|
+|--version     |None         |Show the version number       |
