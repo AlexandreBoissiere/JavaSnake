@@ -1,6 +1,7 @@
 const fs = require("fs");
 const colors = require("colors");
 const { action } = require("./actions_classes.js");
+var importDirs = ["lib/"];
 
 function importsHandler(file_name) {
     try {
@@ -11,17 +12,20 @@ function importsHandler(file_name) {
         actionFlow = actionFlow.Get();
         return [actionFlow, 0];
     } catch {
-        try {
-            let module_content = fs.readFileSync("lib/"+ file_name, {encoding:'utf8',flag:'r'});
-            module_content = module_content.replace(/(\r\n|\n|\r)/gm, "");
-            module_content = module_content.split("    ").join("");
-            let actionFlow = new action(module_content);
-            actionFlow = actionFlow.Get();
-        return [actionFlow, 0];
-        } catch {
-            console.log("Unable to import module: ".red + file_name.red);
-            return [undefined, 1];
+        for (var i = 0; i < importDirs.length; i++) {
+            try {
+                let module_content = fs.readFileSync(importDirs[i] + file_name, {encoding:'utf8',flag:'r'});
+                module_content = module_content.replace(/(\r\n|\n|\r)/gm, "");
+                module_content = module_content.split("    ").join("");
+                let actionFlow = new action(module_content);
+                actionFlow = actionFlow.Get();
+            return [actionFlow, 0];
+            } catch {
+                continue;
+            }
         }
+        console.log("Unable to import module: ".red + file_name.red);
+        return [undefined, 1];
     }
 }  
 
@@ -51,4 +55,8 @@ function importModule(args) {
     }
 }
 
-module.exports = { importsHandler, importModule }
+function addImportDirectory(directory) {
+    importDirs.push(directory);
+}
+
+module.exports = { importsHandler, importModule, addImportDirectory }

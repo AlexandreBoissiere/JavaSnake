@@ -4,6 +4,7 @@ const { memory } = require("./global_data.js");
 const { functions } = require("./functions_def.js");
 const yargs = require("yargs");
 const { engine } = require("./core_engine.js");
+const { addImportDirectory } = require("./imports.js");
 
 const argv = yargs.command('execute', 'Execute a JavaSnake script file',  {
    script_file: {
@@ -27,6 +28,11 @@ const argv = yargs.command('execute', 'Execute a JavaSnake script file',  {
    description: 'Show the program functions memory after its execution',
    type: 'boolean'
 })
+.option('importdirectory', {
+   alias: 'i',
+   description: 'Specify an import directory (you can specify multiple by separating them with a comma).',
+   type: 'string'
+})
 .help()
 .alias('help', 'h')
 .argv;
@@ -36,6 +42,23 @@ if (argv._.includes('execute')) {
    if (file == null) {
       console.log("No file file were specified".red);
       return 1;
+   }
+
+   let exec_path = require('path').dirname(require('fs').realpathSync(file)) + "/";
+   addImportDirectory(exec_path);
+
+   if (argv.importdirectory) {
+      let temp = argv.importdirectory;
+      temp = temp.split(',');
+      for (var i = 0; i < temp.length; i++) {
+         if (temp[i] == "CWD") {
+            temp[i] = __dirname;
+         }
+         if (temp[i].startsWith("CWD/")) {
+            temp[i] = __dirname + "/" + temp[i].substring(4, temp[i].length);
+         }
+         addImportDirectory(temp[i]);
+      }
    }
    
    let import_script = `IMPORT ${file};`;
