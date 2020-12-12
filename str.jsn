@@ -1,0 +1,69 @@
+// Returns 1 (or 0 if false) if arg1 contains arg2.;
+FUNCTION->String.includes;
+    SETVAR INT_ID 0;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+// Returns a substring from a position (arg1) to another (arg2) in arg0.;
+FUNCTION->String.extract;
+    SETVAR INT_ID 1;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+// Returns the length of a string (arg0).;
+FUNCTION->String.strlen;
+    SETVAR INT_ID 2;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+// Returns the first occruence index of a character (arg1) in a string (arg0).;
+FUNCTION->String.indexOf;
+    SETVAR INT_ID 3;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+// Returns the character at specified index (arg1) in the given string (arg0).;
+FUNCTION->String.charAt;
+    SETVAR INT_ID 4;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+// Returns 1 (or 0 if false) if the given string (arg0) starts with the specified string (arg1).;
+FUNCTION->String.startsWith;
+    SETVAR INT_ID 5;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+// Returns 1 (or 0 if false) if the given string (arg0) ends with the specified string (arg1).;
+FUNCTION->String.endsWith;
+    SETVAR INT_ID 6;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+// Returns the character code at the specified index (arg1) in the given string (arg0).;
+FUNCTION->String.charCodeAt;
+    SETVAR INT_ID 7;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+// Returns the given string (arg0) but with only lower cases.;
+FUNCTION->String.toLowerCase;
+    SETVAR INT_ID 8;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+// Returns the given string (arg0) but with only upper cases.;
+FUNCTION->String.toUpperCase;
+    SETVAR INT_ID 9;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
