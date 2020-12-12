@@ -18,3 +18,5 @@
 |short argument|long argument|Description                   |
 |--------------|-------------|------------------------------|
 |--version     |None         |Show the version number       |
+|-r            |--exitcode   |Show the program exit code after its execution|
+|-m            |--memorylog  |Show the program memory after its execution|
