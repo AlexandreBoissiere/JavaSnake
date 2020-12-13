@@ -1,3 +1,0 @@
-build/Windows-x64/javasnake.exe filter=lfs diff=lfs merge=lfs -text
-build/Linux-x64/javasnake filter=lfs diff=lfs merge=lfs -text
-build/MacOS-x64/javasnake filter=lfs diff=lfs merge=lfs -text

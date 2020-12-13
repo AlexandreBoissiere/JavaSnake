@@ -1,0 +1,17 @@
+{
+  "name": "javasnake",
+  "version": "1.0.0",
+  "description": "This code of the JavaSnake language, build in Javascript, the syntax of the language is like Assembly one.",
+  "main": "index.js",
+  "bin": "index.js",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexandre Boissière",
+  "license": "ISC"
+}
