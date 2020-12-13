@@ -44,8 +44,14 @@ if (argv._.includes('execute')) {
       return 1;
    }
 
-   let exec_path = require('path').dirname(require('fs').realpathSync(file)) + "/";
-   addImportDirectory(exec_path);
+   try {
+      let exec_path = require('path').dirname(require('fs').realpathSync(file)) + "/";
+      addImportDirectory(exec_path);
+   } catch {
+      console.log("Unable to import script file: ".red + file.red);
+      console.log("Process terminated with code 1".magenta);
+      return 1;
+   }
 
    if (argv.importdirectory) {
       let temp = argv.importdirectory;
