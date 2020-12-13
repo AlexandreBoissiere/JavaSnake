@@ -29,3 +29,9 @@
 1. Move /build/`<javasnake_executable>` to scripts folder (main folder).
 2. Add javasnake main folder path to PATH environment variable (reference to your Operating System environment variable to know which is corresponding to PATH)
 3. You can use JavaSnake in any folder, just by typing `<javasnake_executable>` and the corresponding options (add -h or --help to see help message)
+
+### With building source
+1. Make sure you have node package "pkg" installed.
+2. Make sure "package.json" is in the same folder as the other source files.
+3. Run "pkg . -t `<your_arch_name>`".
+- To get your architecture name, please refer to [the pkg npm web page](https://www.npmjs.com/package/pkg)
