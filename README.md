@@ -33,6 +33,6 @@
 ### With building source
 1. Make sure you have node package "pkg" installed.
 2. Make sure "package.json" is in the same folder as the other source files.
-3. Install required dependencies, they are listed in <p>DEPENDENCIES.md</p>.
+3. Install required dependencies, they are listed in `DEPENDENCIES.md`.
 3. Run "pkg . -t `<your_arch_name>`".
 - To get your architecture name, please refer to [the pkg npm web page](https://www.npmjs.com/package/pkg)
