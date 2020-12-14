@@ -1,6 +1,7 @@
 IMPORT test_import.jsn;
 IMPORT str.jsn;
 IMPORT maths.jsn;
+IMPORT cryptosecurity.jsn;
 
 SETARRAY array [0,1,2];
 SETARRAY array2 GETARRAY->array;
@@ -89,6 +90,16 @@ SETVAR arg0 2;
 SETVAR arg1 4;
 
 CALL Maths.pi;
+
+PRINT GETVAR->RETURNED;
+
+SETVAR arg0 "Hello World!";
+
+CALL Crypto.sha256Hash;
+
+PRINT GETVAR->RETURNED;
+
+CALL Crypto.sha512Hash;
 
 PRINT GETVAR->RETURNED;
 

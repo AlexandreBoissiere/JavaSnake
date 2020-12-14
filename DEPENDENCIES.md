@@ -2,3 +2,4 @@
 ## Required dependencies:
 - colors ; run `npm install colors`
 - yargs  ; run `npm install yargs`
+- crypto ; run `npm install crypto`

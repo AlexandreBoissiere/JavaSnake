@@ -1,0 +1,11 @@
+FUNCTION->Crypto.sha256Hash;
+    SETVAR INT_ID 38;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+FUNCTION->Crypto.sha512Hash;
+    SETVAR INT_ID 39;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;

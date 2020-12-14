@@ -1,5 +1,6 @@
 const str_utils = require("./str_utils.js");
 const maths = require("./maths.js");
+const cryptosecurity = require("./cryptosecurity.js");
 const { getVarHandler } = require("../vars_global.js");
 const { interrupts } = require("../global_data.js");
 
@@ -24,6 +25,9 @@ function int_engine() {
         }
         else if (int_id >= maths.start && int_id < maths.length + maths.start) {
             maths.build();
+        }
+        else if (int_id >= cryptosecurity.start && int_id < cryptosecurity.length + cryptosecurity.start) {
+            cryptosecurity.build();
         }
         else {
             console.log("Unknown interrupt number: ".red + String(int_id).red);
