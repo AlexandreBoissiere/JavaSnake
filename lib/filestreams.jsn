@@ -1,0 +1,17 @@
+FUNCTION->FileStreams.readFile;
+    SETVAR INT_ID 40;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+FUNCTION->FileStreams.writeFile;
+    SETVAR INT_ID 41;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+FUNCTION->FileStreams.appendFile;
+    SETVAR INT_ID 42;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;

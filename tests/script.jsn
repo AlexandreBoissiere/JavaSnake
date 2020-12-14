@@ -2,6 +2,7 @@ IMPORT test_import.jsn;
 IMPORT str.jsn;
 IMPORT maths.jsn;
 IMPORT cryptosecurity.jsn;
+IMPORT filestreams.jsn;
 
 SETARRAY array [0,1,2];
 SETARRAY array2 GETARRAY->array;
@@ -101,6 +102,15 @@ PRINT GETVAR->RETURNED;
 
 CALL Crypto.sha512Hash;
 
+PRINT GETVAR->RETURNED;
+
+SETVAR arg0 "test_import.jsn";
+
+CALL FileStreams.readFile;
+
+PRINT GETVAR->RETURNED;
+SETVAR arg0 GETVAR->RETURNED;
+CALL Crypto.sha512Hash;
 PRINT GETVAR->RETURNED;
 
 ENDPROG;
