@@ -1,6 +1,6 @@
 const colors = require("colors");
 const structure = require("./core_engine.js");
-const { memory } = require("./global_data.js");
+const { memory, setWorkingDirectory } = require("./global_data.js");
 const { functions } = require("./functions_def.js");
 const yargs = require("yargs");
 const { engine } = require("./core_engine.js");
@@ -47,6 +47,7 @@ if (argv._.includes('execute')) {
    try {
       let exec_path = require('path').dirname(require('fs').realpathSync(file)) + "/";
       addImportDirectory(exec_path);
+      setWorkingDirectory(exec_path);
    } catch {
       console.log("Unable to import script file: ".red + file.red);
       console.log("Process terminated with code 1".magenta);
