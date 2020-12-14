@@ -23,13 +23,12 @@ function setVar(args) {
 		if (!isNaN(varVal)) {
 			varVal = Number(varVal);
 		} else {
-			value = VarVal;
-			console.log(value);
+			let value = varVal;
 			value = String(value);
 			if (value[0] == '"' && value[value.length - 1] == '"') {
 				value = value.substring(1, value.length - 1);
 			} else {
-				console.log(`Missing '"' in declaration of [String]: ${varNAme}`.red);
+				console.log(`Missing '"' in declaration of [String]: ${varName}`.red);
 				return 1;
 			}
 			varVal = value;
