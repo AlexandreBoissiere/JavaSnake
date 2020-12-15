@@ -28,13 +28,13 @@ INC b;
 //PRINT GETVAR->b;
 
 IF_(GETVAR->a==GETVAR->b);
-    PRINT yes;
+    PRINT "yes";
 ELSE;
     PRINT no;
 ENDIF;
 
 //WHILE_GETARRAY->array==GETARRAY->array2;
-//    PRINT arrays are equal;
+//    PRINT "arrays are equal";
 //ENDWHILE;
 
 SETVAR a 0;
@@ -53,20 +53,24 @@ SETVAR d 110;
 //ENDWHILE;
 
 SETARRAY_VALUE array 0 GETVAR->a;
-PRINT GETARRAY->array;
-PRINT MAPARRAY->array 0;
+//PRINT GETARRAY->array;
+PRINT array;
+SETVAR temp MAPARRAY->array 0;
+//PRINT MAPARRAY->array 0;
+PRINT temp;
 
 SETVAR mapped MAPARRAY->array 1;
-PRINT GETVAR->mapped;
+//PRINT GETVAR->mapped;
+PRINT mapped;
 
 IF_(1!=2);
     IF_(1==2);
-        PRINT end sucess;
+        PRINT "end sucess";
     ELSE;
-        PRINT 1 = 2;
+        PRINT "1 = 2";
     ENDIF;
 ELSE;
-    PRINT end error;
+    PRINT "end error";
 ENDIF;
 
 CALL module;
@@ -78,44 +82,52 @@ SETVAR arg2 5;
 
 SYSINT;
 
-PRINT GETVAR->RETURNED;
+//PRINT GETVAR->RETURNED;
+PRINT RETURNED;
 
 SETVAR arg0 "Hello World!";
 SETVAR arg1 0;
 SETVAR arg2 5;
 CALL String.toUpperCase;
 
-PRINT GETVAR->RETURNED;
+//PRINT GETVAR->RETURNED;
+PRINT RETURNED;
 
 SETVAR arg0 2;
 SETVAR arg1 4;
 
 CALL Maths.pi;
 
-PRINT GETVAR->RETURNED;
+//PRINT GETVAR->RETURNED;
+PRINT RETURNED;
 
 SETVAR arg0 "Hello World!";
 
 CALL Crypto.sha256Hash;
 
-PRINT GETVAR->RETURNED;
+//PRINT GETVAR->RETURNED;
+PRINT RETURNED;
 
 CALL Crypto.sha512Hash;
 
-PRINT GETVAR->RETURNED;
+//PRINT GETVAR->RETURNED;
+PRINT RETURNED;
 
 SETVAR arg0 "test_import.jsn";
 
 CALL FileStreams.readFile;
 
-PRINT GETVAR->RETURNED;
+//PRINT GETVAR->RETURNED;
+PRINT RETURNED;
 SETVAR arg0 GETVAR->RETURNED;
 CALL Crypto.sha512Hash;
-PRINT GETVAR->RETURNED;
+//PRINT GETVAR->RETURNED;
+PRINT RETURNED;
 
 ENDPROG;
 
 //DELETING MEMORY VARIABLES
+DELVAR temp;
 DELVAR RETURNED;
 DELVAR a;
 DELVAR b;

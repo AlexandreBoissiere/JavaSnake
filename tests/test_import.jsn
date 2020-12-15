@@ -1,4 +1,5 @@
 FUNCTION->module;
-    PRINT Hello from the Module!;
+//    PRINT Hello from the Module!;
+//    PRINT "Hello from the Module!";
 //    SETVAR RETURNED 1;
 ENDFUNC;
