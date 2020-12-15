@@ -20,7 +20,7 @@ function getVarHandler(name) {
 			returned[1] = 0;
 		}
 		return returned;
-	} catch(err) {
+	} catch {
 		console.log("This variable doesn't exists".red);
 		let returned = [undefined, 1];
 		return returned;
