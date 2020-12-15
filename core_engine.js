@@ -10,11 +10,52 @@ const { mapArray } = require("./array_extended.js");
 const { action, action_form } = require("./actions_classes.js");
 const { importModule } = require("./imports.js");
 const { int_engine } = require("./interrupts/interrupts_engine.js");
+const { parseValue } = require("./vars_def.js");
+const { memory } = require("./global_data.js");
 
 function print(args) {
 	let temp_args = args;
 
-	if (args[0].startsWith("GETVAR->")) {
+	if (args.length == 1) {
+		let variable_type;
+		try {
+			let buffer = memory.get(args[0]);
+			if (Array.isArray(buffer)) {
+				variable_type = "array";
+			} else {
+				variable_type = "simple";
+			}
+		} catch {
+			console.log("Unable ot determine varibale type of: ".red + args[0].red);
+			return 1;
+		}
+		
+		let temp = parseValue(args[0], variable_type);
+		if (temp[1] == 1) {
+			console.log("Error while fetching value of: ".red + args[0].red);
+			return 1;
+		} else {
+			console.log(temp[0]);
+			return 0;
+		}
+	} else if (args.length > 1) {
+		let buffer = temp_args[0];
+
+		for (var i = 1; i < temp_args.length; i++) {
+			buffer += " " + temp_args[i];
+		}
+
+		let temp = parseValue(buffer, undefined);
+		if (temp[1] == 1) {
+			return 1;
+		}
+		console.log(temp[0]);
+	} else {
+		console.log("PRINT str format was not good.".red);
+		return 1;
+	}
+
+	/*if (args[0].startsWith("GETVAR->")) {
 		let temp = temp_args[0];
 
 		for (var i = 1; i < temp_args.length; i++) {
@@ -74,7 +115,7 @@ function print(args) {
 	} else {
 		console.log("PRINT str format was not good.".red);
 		return 1;
-	}
+	}*/
 
 	return 0;
 }
