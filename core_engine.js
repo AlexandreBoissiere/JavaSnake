@@ -1,7 +1,7 @@
 const colors = require("colors");
 
 const vars = require("./vars.js");
-const { getVarHandler, setVarHandler, setVar, getVar, deleteVar } = require("./vars_primitive.js");
+const { setVar, getVar, deleteVar, parseValue } = require("./vars_primitive.js");
 const conditions = require("./conditions_args_parser.js");
 const functions = require("./functions_def.js");
 const arrays = require("./arrays.js");
@@ -10,7 +10,6 @@ const { mapArray } = require("./array_extended.js");
 const { action, action_form } = require("./actions_classes.js");
 const { importModule } = require("./imports.js");
 const { int_engine } = require("./interrupts/interrupts_engine.js");
-const { parseValue } = require("./vars_def.js");
 const { memory } = require("./global_data.js");
 
 function print(args) {
@@ -54,68 +53,6 @@ function print(args) {
 		console.log("PRINT str format was not good.".red);
 		return 1;
 	}
-
-	/*if (args[0].startsWith("GETVAR->")) {
-		let temp = temp_args[0];
-
-		for (var i = 1; i < temp_args.length; i++) {
-			temp += " " + temp_args[i];
-		}
-
-		let returned = getVar(temp.replace("GETVAR->", ""));
-		if (returned[1] == 1) {
-			console.log("Error while reading variable in print() function".red);
-			console.log("Variable name: ".red + temp.replace("GETVAR->", "").red);
-			return 1;
-		}
-		console.log(returned[0]);
-	}
-	else if (args[0].startsWith("GETARRAY->")) {
-		let temp = temp_args[0];
-
-		let returned = getArray(temp.replace("GETARRAY->", ""));
-		if (returned[1] == 1) {
-			console.log("Error while reading array in print() function.".red);
-			console.log("Array name: ".red + temp.replace("GETARRAY->", ""));
-			return 1;
-		}
-		console.log(returned[0]);
-	}
-	else if (args[0].startsWith("MAPARRAY->")) {
-		let temp = temp_args[0];
-		if (isNaN(args[1])) {
-			console.log("Specified index was not a valid number: ".red + args[1].red);
-			return 1;
-		}
-		if (!Number.isInteger(Number(args[1]))) {
-			console.log("Specified index was not an integer: ".red + args[1].red);
-		}
-
-		let local_args = [temp.replace("MAPARRAY->", ""), args[1]];
-
-		let returned = mapArray(local_args);
-		if (returned[1] == 1) {
-			console.log("Error while reading array in print() function.".red);
-			console.log("Array name: ".red + temp.replace("MAPARRAY->", ""));
-			return 1;
-		}
-
-		console.log(returned[0]);
-	} 
-	else if (args.length == 1) {
-		console.log(temp_args[0]);
-	} else if (args.length > 1) {
-		let temp = temp_args[0];
-
-		for (var i = 1; i < temp_args.length; i++) {
-			temp += " " + temp_args[i];
-		}
-
-		console.log(temp);
-	} else {
-		console.log("PRINT str format was not good.".red);
-		return 1;
-	}*/
 
 	return 0;
 }

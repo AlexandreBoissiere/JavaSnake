@@ -1,4 +1,4 @@
-const { getVarHandler, setVarHandler } = require("./vars_primitive.js");
+const { getVarHandler, setVarHandler } = require("./vars_global.js");
 const { getArrayHandler, setArrayHandler } = require("./arrays_primitives.js");
 
 /*
