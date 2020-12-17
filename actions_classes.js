@@ -68,7 +68,7 @@ function parse_values(str) {
 			buffer = (buffer.substring(0, i) + "%semcol_mark%" + buffer.substring(i + 1, buffer.length));
 			continue;
 		}
-		if (buffer[i] == '"' && inVariable == true) {
+		if (buffer[i] == '"' && inVariable == true && buffer[i - 1] != '\\') {
 			inVariable = false;
 			continue;
 		}
