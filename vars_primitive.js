@@ -1,7 +1,7 @@
-const { mapArray } = require("./array_extended.js");
+const { mapArray } = require("./arrays/array_extended.js");
 const { memory } = require("./global_data.js");
 const { getVarHandler, setVarHandler } = require("./vars_global.js");
-const { getArray } = require("./arrays.js");
+const { getArray } = require("./arrays/arrays.js");
 
 function setVar(args) {
 	let temp_args = args;

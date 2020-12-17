@@ -1,5 +1,5 @@
-const { memory } = require("./global_data.js");
-const { setVarHandler, getVarHandler } = require("./vars_global.js");
+const { memory } = require("../global_data.js");
+const { setVarHandler, getVarHandler } = require("../vars_global.js");
 
 // name : array name
 // unparsedValues : values to code format ([value1,value2,value3,...]).

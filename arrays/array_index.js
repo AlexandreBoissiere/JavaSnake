@@ -1,5 +1,5 @@
 const { getArrayHandler, setArrayHandler } = require("./arrays_primitives.js");
-const { parseValue } = require("./vars_primitive.js");
+const { parseValue } = require("../vars_primitive.js");
 
 function setArrayIndex(args) {
     let array_name = args[0];

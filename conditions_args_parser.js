@@ -1,5 +1,5 @@
 const { getVar, setVar } = require("./vars_primitive.js");
-const { getArray, setArray, mapArray } = require("./arrays.js");
+const { getArray, setArray, mapArray } = require("./arrays/arrays.js");
 var lodash = require("lodash");
 
 function checker(args) {
