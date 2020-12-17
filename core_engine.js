@@ -7,6 +7,7 @@ const functions = require("./functions_def.js");
 const arrays = require("./arrays.js");
 const { getArray } = require("./arrays.js");
 const { mapArray } = require("./array_extended.js");
+const { setArrayIndex } = require("./array_index.js");
 const { action, action_form } = require("./actions_classes.js");
 const { importModule } = require("./imports.js");
 const { int_engine } = require("./interrupts/interrupts_engine.js");
@@ -387,7 +388,7 @@ function engine(string, rebuild) {
 				return 1;
 			}
 		} else if (Actions[i][0].startsWith("SETARRAY_VALUE")) {
-			let returned = arrays.setArrayIndex(Actions[i][1]);
+			let returned = setArrayIndex(Actions[i][1]);
 			if (returned == 1) {
 				return 1;
 			}

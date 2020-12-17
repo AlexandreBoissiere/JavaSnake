@@ -53,7 +53,8 @@ SETVAR d 110;
 //    ENDWHILE;
 //ENDWHILE;
 
-SETARRAY_VALUE array 0 GETVAR->a;
+//SETARRAY_VALUE array 0 GETVAR->a;
+SETARRAY_VALUE array 0 a;
 
 //PRINT GETARRAY->array;
 PRINT array;
@@ -64,7 +65,9 @@ SETVAR temp array[0];
 //PRINT MAPARRAY->array 0;
 PRINT temp;
 
-SETVAR mapped MAPARRAY->array 1;
+//SETVAR mapped MAPARRAY->array 1;
+SETVAR mapped array[1];
+
 //PRINT GETVAR->mapped;
 PRINT mapped;
 
