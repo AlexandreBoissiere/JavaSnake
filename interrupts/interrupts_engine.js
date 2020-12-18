@@ -2,6 +2,7 @@ const str_utils = require("./str_utils.js");
 const maths = require("./maths.js");
 const cryptosecurity = require("./cryptosecurity.js");
 const filestreams = require("./filestreams.js");
+const int_arrays = require("./int_arrays.js");
 const { getVarHandler } = require("../vars_global.js");
 const { interrupts } = require("../global_data.js");
 
@@ -32,6 +33,9 @@ function int_engine() {
         }
         else if (int_id >= filestreams.start && int_id < filestreams.length + filestreams.start) {
             filestreams.build();
+        }
+        else if (int_id >= int_arrays.start && int_id < int_arrays.length + int_arrays.start) {
+            int_arrays.build();
         }
         else {
             console.log("Unknown interrupt number: ".red + String(int_id).red);

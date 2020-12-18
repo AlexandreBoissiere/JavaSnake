@@ -1,0 +1,11 @@
+FUNCTION->Arrays.toString;
+    SETVAR INT_ID 46;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+FUNCTION->Arrays.reverse;
+    SETVAR INT_ID 47;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;

@@ -4,7 +4,7 @@ const { memory, interrupts, getWorkingDirectory } = require("../global_data.js")
 const fs = require("fs");
 const { getArgs } = require("./interrupts_tools.js");
 
-const ints = [readFile, writeFile, appendFile];
+const ints = [readFile, writeFile, appendFile, readFileBytes, writeFileBytes, appendFileBytes];
 const length = ints.length;
 const start = cryptosecurity.start + cryptosecurity.length;
 
@@ -20,7 +20,7 @@ function readFile() {
             flag: 'r'
         });
 
-        setVarHandler("RETURNED", '"' + filecontent + '"');
+        setVarHandler("RETURNED", String(filecontent));
 
         return 0;
     } catch {
@@ -57,6 +57,58 @@ function appendFile() {
         fs.appendFileSync(getWorkingDirectory() + String(values[0]), String(values[1]), {
             encoding: 'utf8',
         });
+
+        return 0;
+    } catch {
+        console.log("Error while appending to file: ".red + getWorkingDirectory().red + String(values[0]).red);
+        return 1;
+    }
+}
+
+function readFileBytes() {
+    let values = getArgs(1);
+    if (values == 1) {
+        return 1;
+    }
+
+    try {
+        let filecontent = fs.readFileSync(getWorkingDirectory() + String(values[0]), {
+            flag: 'r'
+        });
+
+        setVarHandler("RETURNED", String(filecontent));
+
+        return 0;
+    } catch {
+        console.log("Error while reading file: ".red + getWorkingDirectory().red + String(values[0]).red);
+        return 1;
+    }
+}
+
+function writeFileBytes() {
+    let values = getArgs(2);
+    if (values == 1) {
+        return 1;
+    }
+
+    try {
+        fs.writeFileSync(getWorkingDirectory() + String(values[0]), String(values[1]));
+
+        return 0;
+    } catch {
+        console.log("Error while writing to file: ".red + getWorkingDirectory().red + String(values[0]).red);
+        return 1;
+    }
+}
+
+function appendFileBytes() {
+    let values = getArgs(2);
+    if (values == 1) {
+        return 1;
+    }
+
+    try {
+        fs.appendFileSync(getWorkingDirectory() + String(values[0]), String(values[1]));
 
         return 0;
     } catch {

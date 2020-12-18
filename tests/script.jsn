@@ -3,6 +3,7 @@ IMPORT str.jsn;
 IMPORT maths.jsn;
 IMPORT cryptosecurity.jsn;
 IMPORT filestreams.jsn;
+IMPORT arrays.jsn;
 
 SETARRAY array [0,1,2];
 SETARRAY array2 array;
@@ -119,6 +120,22 @@ CALL Crypto.sha512Hash;
 PRINT RETURNED;
 
 SETARRAY end [a,2,"Hello World!"];
+
+SETARRAY string ["a","b","c","d","e"];
+
+SETARRAY arg0 string;
+
+CALL Arrays.toString;
+
+SETVAR arg0 RETURNED;
+CALL String.toUpperCase;
+
+PRINT RETURNED;
+
+SETARRAY arg0 string;
+CALL Arrays.reverse;
+
+PRINT RETURNED;
 
 ENDPROG;
 
