@@ -402,7 +402,10 @@ function engine(string, rebuild) {
 			if (returned[1] == 1) {
 				return 1;
 			}
-			engine(returned[0], false);
+			let temp_code = engine(returned[0], false);
+			if (temp_code == 1) {
+				return 1;
+			}
 		} else if (Actions[i][0] == "SYSINT") {
 			let returned = int_engine();
 			if (returned == 1) {

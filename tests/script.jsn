@@ -17,24 +17,21 @@ CALL test;
 SETVAR a 1;
 SETVAR b a;
 
-//ADD b GETVAR->a;
 ADD b a;
-//SUB a GETVAR->b;
 SUB a b;
-//MUL a GETVAR->a;
 MUL a a;
 INC a;
-//DIV b GETVAR->a;
 DIV b a;
 INC b;
 
-IF_(GETVAR->a==GETVAR->b);
+//IF_(GETVAR->a==GETVAR->b);
+IF_(a==b);
     PRINT "yes";
 ELSE;
     PRINT "no";
 ENDIF;
 
-//WHILE_GETARRAY->array==GETARRAY->array2;
+//WHILE_(array==array2);
 //    PRINT "arrays are equal";
 //ENDWHILE;
 
@@ -43,12 +40,12 @@ SETVAR b 10;
 SETVAR c 100;
 SETVAR d 110;
 
-//WHILE_GETVAR->a|<|GETVAR->b;
-//    PRINT GETVAR->a;
+//WHILE_(a|<|b);
+//    PRINT a;
 //    INC a;
 //    SETVAR c 100;
-//    WHILE_GETVAR->c|<|GETVAR->d;
-//        PRINT GETVAR->c;
+//    WHILE_(c|<|d);
+//        PRINT c;
 //        INC c;
 //    ENDWHILE;
 //ENDWHILE;
