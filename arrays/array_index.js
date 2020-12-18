@@ -40,10 +40,11 @@ function setArrayIndex(args) {
     value = buffer[0];
 
     array_values[array_index] = value;
+    /*
     let opening = "[";
     let closing = "]";
-    let array_str = opening + array_values + closing;
-    setArrayHandler(array_name, array_str);
+    let array_str = opening + array_values + closing;*/
+    setArrayHandler(array_name, array_values);
 
 	return 0;
 }

@@ -24,11 +24,12 @@ function mapArray(args) {
     }
 
     returned[0] = returned[0][Number(array_index)];
+    /*
     if (!isNaN(returned[0])) {
         returned[0] = Number(returned[0]);
     } else if (typeof returned[0] === "string") {
         returned[0] = returned[0].substr(1, returned[0].length - 2);
-    }
+    }*/
 	return returned;
 }
 
