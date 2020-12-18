@@ -1,4 +1,4 @@
-const { getVarHandler, setVarHandler, memory } = require("./vars_primitive.js");
+const { getVarHandler, setVarHandler, memory, parseValue } = require("./vars_primitive.js");
 
 function incHandler(name) {
     try {
@@ -113,15 +113,12 @@ function add(args) {
 	if (args.length == 2) {
 		let varName = temp_args[0];
 		let varVal = temp_args [1];
-		if (varVal.startsWith("GETVAR->")) {
-			varVal = varVal.replace("GETVAR->", "");
-			let returned = getVarHandler(varVal);
-			if (returned[1] == 1) {
-				return returned[1];
-			}
-			varVal = returned[0];
-        }
-		let returned = addHandler(varName, varVal);
+		let buffer = parseValue(varVal, "simple");
+		if (buffer[1] == 1) {
+			return 1;
+		}
+
+		let returned = addHandler(varName, buffer[0]);
 		if (returned == 1) {
 			console.log("Error while adding variable value".red);
 		}
@@ -134,17 +131,12 @@ function add(args) {
 		for (var i = 2; i < temp_args.length; i++) {
 			temp += " " + temp_args[i];
 		}
-
-		if (temp.startsWith("GETVAR->")) {
-			temp = temp.replace("GETVAR->", "");
-			let returned = getVar(temp);
-			if (returned[1] == 1) {
-				return returned[1];
-			}
-			temp = returned[0];
+		let buffer = parseValue(temp, "simple");
+		if (buffer[1] == 1) {
+			return 1;
 		}
 
-		let returned = addHandler(varName, temp);
+		let returned = addHandler(varName, buffer[0]);
 		if (returned == 1) {
 			console.log("Error while adding variable value".red);
 		}
@@ -176,15 +168,13 @@ function sub(args) {
 	if (args.length == 2) {
 		let varName = temp_args[0];
 		let varVal = temp_args [1];
-		if (varVal.startsWith("GETVAR->")) {
-			varVal = varVal.replace("GETVAR->", "");
-			let returned = getVarHandler(varVal);
-			if (returned[1] == 1) {
-				return returned[1];
-			}
-			varVal = returned[0];
-        }
-		let returned = subHandler(varName, varVal);
+		
+		let buffer = parseValue(varVal, "simple");
+		if (buffer[1] == 1) {
+			return 1;
+		}
+
+		let returned = subHandler(varName, buffer[0]);
 		if (returned == 1) {
 			console.log("Error while substracting variable value".red);
 		}
@@ -198,16 +188,12 @@ function sub(args) {
 			temp += " " + temp_args[i];
 		}
 
-		if (temp.startsWith("GETVAR->")) {
-			temp = temp.replace("GETVAR->", "");
-			let returned = getVar(temp);
-			if (returned[1] == 1) {
-				return returned[1];
-			}
-			temp = returned[0];
+		let buffer = parseValue(temp, "simple");
+		if (buffer[1] == 1) {
+			return 1;
 		}
 
-		let returned = subHandler(varName, temp);
+		let returned = subHandler(varName, buffer[0]);
 		if (returned == 1) {
 			console.log("Error while substracting variable value".red);
 		}
@@ -239,15 +225,13 @@ function mul(args) {
 	if (args.length == 2) {
 		let varName = temp_args[0];
 		let varVal = temp_args [1];
-		if (varVal.startsWith("GETVAR->")) {
-			varVal = varVal.replace("GETVAR->", "");
-			let returned = getVarHandler(varVal);
-			if (returned[1] == 1) {
-				return returned[1];
-			}
-			varVal = returned[0];
-        }
-		let returned = mulHandler(varName, varVal);
+		
+		let buffer = parseValue(varVal, "simple");
+		if (buffer[1] == 1) {
+			return 1;
+		}
+
+		let returned = mulHandler(varName, buffer[0]);
 		if (returned == 1) {
 			console.log("Error while multiplicating variable value".red);
 		}
@@ -261,16 +245,12 @@ function mul(args) {
 			temp += " " + temp_args[i];
 		}
 
-		if (temp.startsWith("GETVAR->")) {
-			temp = temp.replace("GETVAR->", "");
-			let returned = getVar(temp);
-			if (returned[1] == 1) {
-				return returned[1];
-			}
-			temp = returned[0];
+		let buffer = parseValue(temp, "simple");
+		if (buffer[0] == 1) {
+			return 1;
 		}
 
-		let returned = mulHandler(varName, temp);
+		let returned = mulHandler(varName, buffer[0]);
 		if (returned == 1) {
 			console.log("Error while multiplicating variable value".red);
 		}
@@ -302,15 +282,13 @@ function div(args) {
 	if (args.length == 2) {
 		let varName = temp_args[0];
 		let varVal = temp_args [1];
-		if (varVal.startsWith("GETVAR->")) {
-			varVal = varVal.replace("GETVAR->", "");
-			let returned = getVarHandler(varVal);
-			if (returned[1] == 1) {
-				return returned[1];
-			}
-			varVal = returned[0];
-        }
-		let returned = divHandler(varName, varVal);
+		
+		let buffer = parseValue(varVal, "simple");
+		if (buffer[1] == 1) {
+			return 1;
+		}
+
+		let returned = divHandler(varName, buffer[0]);
 		if (returned == 1) {
 			console.log("Error while dividing variable value".red);
 		}
@@ -324,16 +302,12 @@ function div(args) {
 			temp += " " + temp_args[i];
 		}
 
-		if (temp.startsWith("GETVAR->")) {
-			temp = temp.replace("GETVAR->", "");
-			let returned = getVar(temp);
-			if (returned[1] == 1) {
-				return returned[1];
-			}
-			temp = returned[0];
+		let buffer = parseValue(temp, "simple");
+		if (buffer[1] == 1) {
+			return 1;
 		}
 
-		let returned = divHandler(varName, temp);
+		let returned = divHandler(varName, buffer[0]);
 		if (returned == 1) {
 			console.log("Error while dividing variable value".red);
 		}
