@@ -9,3 +9,15 @@ FUNCTION->Arrays.reverse;
     SYSINT;
     DELVAR INT_ID;
 ENDFUNC;
+
+FUNCTION->Arrays.length;
+    SETVAR INT_ID 48;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+FUNCTION->Arrays.push;
+    SETVAR INT_ID 49;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;

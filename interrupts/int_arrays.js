@@ -2,8 +2,9 @@ const filestreams = require("./filestreams.js");
 const { getVarHandler, setVarHandler } = require("../vars_global.js");
 const { memory, interrupts, getWorkingDirectory } = require("../global_data.js");
 const { getArgs } = require("./interrupts_tools.js");
+const { parseValue } = require("../vars_primitive.js");
 
-const ints = [toString, reverse];
+const ints = [toString, reverse, array_length, push_array];
 const length = ints.length;
 const start = filestreams.start + filestreams.length;
 
@@ -64,6 +65,67 @@ function reverse() {
         return 0;
     } catch {
         console.log(`Unable to reverse array '${values[0]}'.`.red);
+        return 1;
+    }
+}
+
+function array_length() {
+    let values = getArgs(1);
+    if (values == 1) {
+        return 1;
+    }
+
+    try {
+        let array = values[0];
+        if (array == undefined) {
+            return 1;
+        }
+
+        if (!Array.isArray(array)) {
+            console.log(`Given variable is not an array.`.red);
+            return 1;
+        }
+
+        setVarHandler("RETURNED", array.length);
+
+        return 0;
+    } catch {
+        console.log(`Unable to get array length of '${values[0]}'.`.red);
+        return 1;
+    }
+}
+
+function push_array() {
+    let values = getArgs(2);
+    if (values == 1) {
+        return 1;
+    }
+
+    try {
+        let array = values[0];
+        let value = values[1];
+
+        if (array == undefined) {
+            return 1;
+        }
+
+        if (!Array.isArray(array)) {
+            console.log(`Given variable is not an array.`.red);
+            return 1;
+        }
+
+        let buffer = parseValue(value, "simple");
+        if (buffer[1] == 1) {
+            return 1;
+        } else {
+            array.push(buffer[0]);
+        }
+
+        setVarHandler("RETURNED", array);
+
+        return 0;
+    } catch {
+        console.log(`Unable to push to array '${values[0]}': ${values[1]}`.red);
         return 1;
     }
 }

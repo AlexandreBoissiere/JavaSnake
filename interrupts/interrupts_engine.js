@@ -3,6 +3,8 @@ const maths = require("./maths.js");
 const cryptosecurity = require("./cryptosecurity.js");
 const filestreams = require("./filestreams.js");
 const int_arrays = require("./int_arrays.js");
+const convert = require("./convert.js");
+
 const { getVarHandler } = require("../vars_global.js");
 const { interrupts } = require("../global_data.js");
 
@@ -36,6 +38,9 @@ function int_engine() {
         }
         else if (int_id >= int_arrays.start && int_id < int_arrays.length + int_arrays.start) {
             int_arrays.build();
+        }
+        else if (int_id >= convert.start && int_id < convert.length + convert.start) {
+            convert.build();
         }
         else {
             console.log("Unknown interrupt number: ".red + String(int_id).red);

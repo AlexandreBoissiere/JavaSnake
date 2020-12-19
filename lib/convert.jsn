@@ -1,0 +1,11 @@
+FUNCTION->Convert.stringToArray;
+    SETVAR INT_ID 50;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+FUNCTION->Convert.arrayToString;
+    SETVAR INT_ID 51;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;

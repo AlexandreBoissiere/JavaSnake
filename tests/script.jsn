@@ -4,6 +4,7 @@ IMPORT maths.jsn;
 IMPORT cryptosecurity.jsn;
 IMPORT filestreams.jsn;
 IMPORT arrays.jsn;
+IMPORT convert.jsn;
 
 SETARRAY array [0,1,2];
 SETARRAY array2 array;
@@ -98,26 +99,26 @@ CALL Maths.pi;
 
 PRINT RETURNED;
 
-SETVAR arg0 "Hello World!";
+//SETVAR arg0 "Hello World!";
 
-CALL Crypto.sha256Hash;
+//CALL Crypto.sha256Hash;
 
-PRINT RETURNED;
+//PRINT RETURNED;
 
-CALL Crypto.sha512Hash;
+//CALL Crypto.sha512Hash;
 
-PRINT RETURNED;
+//PRINT RETURNED;
 
-SETVAR arg0 "test_import.jsn";
+//SETVAR arg0 "test_import.jsn";
 
-CALL FileStreams.readFile;
+//CALL FileStreams.readFile;
 
-PRINT RETURNED;
+//PRINT RETURNED;
 
-SETVAR arg0 RETURNED;
+//SETVAR arg0 RETURNED;
 
-CALL Crypto.sha512Hash;
-PRINT RETURNED;
+//CALL Crypto.sha512Hash;
+//PRINT RETURNED;
 
 SETARRAY end [a,2,"Hello World!"];
 
@@ -136,6 +137,27 @@ SETARRAY arg0 string;
 CALL Arrays.reverse;
 
 PRINT RETURNED;
+
+SETARRAY arg0 RETURNED;
+
+SETVAR arg1 "-1";
+CALL Arrays.push;
+
+PRINT RETURNED;
+
+SETARRAY arg0 RETURNED;
+CALL Arrays.length;
+
+PRINT RETURNED;
+
+CALL Convert.arrayToString;
+
+PRINT RETURNED;
+
+//SETVAR arg0 RETURNED;
+//CALL Convert.stringToArray;
+
+//PRINT RETURNED;
 
 ENDPROG;
 
