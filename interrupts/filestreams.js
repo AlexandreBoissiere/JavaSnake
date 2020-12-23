@@ -75,11 +75,17 @@ function readFileBytes() {
         let filecontent = fs.readFileSync(getWorkingDirectory() + String(values[0]), {
             flag: 'r'
         });
+        let bytes = Uint8Array.from(Buffer.from(filecontent));
+        let standard_array = [];
+        for (var i = 0; i < bytes.length; i++) {
+            standard_array.push(bytes[i]);
+        }
 
-        setVarHandler("RETURNED", String(filecontent));
+        setVarHandler("RETURNED", standard_array);
 
         return 0;
-    } catch {
+    } catch(err) {
+        console.log(err);
         console.log("Error while reading file: ".red + getWorkingDirectory().red + String(values[0]).red);
         return 1;
     }
@@ -91,8 +97,15 @@ function writeFileBytes() {
         return 1;
     }
 
+    if (!Array.isArray(values[1])) {
+        console.log("Given argument is not an array.".red);
+        return 1;
+    }
+
+    let buffer = Buffer.from(values[1]);
+
     try {
-        fs.writeFileSync(getWorkingDirectory() + String(values[0]), String(values[1]));
+        fs.writeFileSync(getWorkingDirectory() + String(values[0]), buffer);
 
         return 0;
     } catch {
@@ -107,8 +120,15 @@ function appendFileBytes() {
         return 1;
     }
 
+    if (!Array.isArray(values[1])) {
+        console.log("Given argument is not an array.".red);
+        return 1;
+    }
+
+    let buffer = Buffer.from(values[1]);
+
     try {
-        fs.appendFileSync(getWorkingDirectory() + String(values[0]), String(values[1]));
+        fs.appendFileSync(getWorkingDirectory() + String(values[0]), buffer);
 
         return 0;
     } catch {
