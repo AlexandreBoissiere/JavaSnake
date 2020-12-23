@@ -4,7 +4,7 @@ const { memory, interrupts, getWorkingDirectory } = require("../global_data.js")
 const { getArgs } = require("./interrupts_tools.js");
 const { parseValue } = require("../vars_primitive.js");
 
-const ints = [stringToArray, arrayToString];
+const ints = [stringToArray, arrayToString, stringToBytes, bytesToString];
 const length = ints.length;
 const start = int_arrays.start + int_arrays.length;
 
@@ -55,6 +55,55 @@ function arrayToString() {
         return 0;
     } catch {
         console.log(`Unable to convert array to string: ${values[0]}`.red);
+        return 1;
+    }
+}
+
+function stringToBytes() {
+    let values = getArgs(1);
+    if (values == 1) {
+        return 1;
+    }
+
+    try {
+        let temp = String(values[0]);
+        let buffer = Buffer.from(temp);
+
+        let bytes = [];
+        for (var i = 0; i < buffer.length; i++) {
+            bytes.push(buffer[i]);
+        }
+
+        setVarHandler("RETURNED", bytes);
+
+        return 0;
+    } catch {
+        console.log("Error while converting string to byte array: ".red + String(values[0]).red);
+        return 1;
+    }
+}
+
+function bytesToString() {
+    let values = getArgs(1);
+    if (values == 1) {
+        return 1;
+    }
+
+    try {
+        if (!Array.isArray(values[0])) {
+            console.log("Given argument is not an array.".red);
+            return 1;
+        }
+
+        let bytes = values[0];
+        let buffer = Buffer.from(bytes);
+        
+        let string = buffer.toString('utf8');
+
+        setVarHandler("RETURNED", string);
+
+        return 0;
+    } catch {
         return 1;
     }
 }

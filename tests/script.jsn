@@ -109,11 +109,17 @@ PRINT RETURNED;
 
 //PRINT RETURNED;
 
-//SETVAR arg0 "test_import.jsn";
+SETVAR arg0 "test_import.jsn";
 
 //CALL FileStreams.readFile;
+//CALL FileStreams.readFileBytes;
 
 //PRINT RETURNED;
+//SETVAR temp RETURNED[0];
+//PRINT temp;
+//SETVAR arg0 "output.txt";
+//SETARRAY arg1 RETURNED;
+//CALL FileStreams.writeFileBytes;
 
 //SETVAR arg0 RETURNED;
 
@@ -152,6 +158,16 @@ PRINT RETURNED;
 
 CALL Convert.arrayToString;
 
+PRINT RETURNED;
+
+SETVAR arg0 RETURNED;
+
+CALL Convert.stringToBytes;
+
+PRINT RETURNED;
+
+SETARRAY arg0 RETURNED;
+CALL Convert.bytesToString;
 PRINT RETURNED;
 
 //SETVAR arg0 RETURNED;

@@ -9,3 +9,15 @@ FUNCTION->Convert.arrayToString;
     SYSINT;
     DELVAR INT_ID;
 ENDFUNC;
+
+FUNCTION->Convert.stringToBytes;
+    SETVAR INT_ID 52;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
+
+FUNCTION->Convert.bytesToString;
+    SETVAR INT_ID 53;
+    SYSINT;
+    DELVAR INT_ID;
+ENDFUNC;
